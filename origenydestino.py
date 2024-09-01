@@ -1,13 +1,9 @@
 #Funcion de Registro
-
-print("Bienvenido a la agencia de viajes panchito la mejor agencia de viajes en Colombia, a continuacion se mostraran las cidades donde estamos ubicados: ")
-
-print(" 1. Bogota \n 2. Medellin \n 3. Cartagena \n 4. Barranquilla \n 5. Cali")
-
+#validacion origen
 def validacionorigen ():
     while True:
         try:
-            origen = int(input("Digite el numero de su lugar de partida: "))
+            origen = int(input("\nDigite el numero de su lugar de partida: "))
             if origen >=1 and origen<=5:
                 break
             else:
@@ -15,11 +11,11 @@ def validacionorigen ():
         except ValueError:
             print("Por favor, introduce un número válido.")
     return origen
-
+#validacion destino
 def validadestino ():
     while True:
         try:
-            destino=int(input("Digite el numero de lugar de llegada: "))
+            destino=int(input("\nDigite el numero de lugar de llegada: "))
             if destino >=1 and destino<=5:
                 break
             else:
@@ -28,7 +24,12 @@ def validadestino ():
             print("Por favor, introduce un número válido.")
     return destino
 
+#orquestación origen y destino
 def validarorigenydestino():       
+    print("Bienvenido a la agencia de viajes panchito la mejor agencia de viajes en Colombia, a continuacion se mostraran las cidades donde estamos ubicados: ")
+
+    print(" 1. Bogota \n 2. Medellin \n 3. Cartagena \n 4. Barranquilla \n 5. Cali")
+
     while True:
         try:
             origen = int(validacionorigen())
