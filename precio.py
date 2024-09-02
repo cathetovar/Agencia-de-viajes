@@ -1,37 +1,41 @@
-import datetime
+from utilities import diasTotales
 
-#funciones utilitarias
-#imprimir listas
 
-def printList(inLista):
-    for lista in inLista:
-            for elemento in lista:
-                print(elemento, end=" ")
-            print()  # Salto de línea después de cada lista
+#Elegir paquete y numero de personas y precio total
+def choose(paquetes, fechasReserva):
+    while True:
+        try:
+            paqueteIndex = int(input("\nIngrese el número correspondiente al paquete que desea: ")) - 1
+            if paqueteIndex < 0 or paqueteIndex >= len(paquetes):
+                raise ValueError("Índice de paquete fuera de rango.")
+            break
+        except ValueError as e:
+            print(f"Entrada no válida: {e}. Por favor, intente de nuevo.")
 
-#imprimir lista como un solo string
-def printSingleList(inLista):
-     print(" ".join(inLista))
+    while True:
+        try:
+            numPersonas = int(input("Digite la cantidad de personas que adquirirán el paquete: "))
+            if numPersonas <= 0:
+                raise ValueError("El número de personas debe ser mayor que cero.")
+            break
+        except ValueError as e:
+            print(f"Entrada no válida: {e}. Por favor, intente de nuevo.")
 
-#imprimir datos de pasajeros
-def printPasajeros(pasajeros):
-    i=0
-    print("\nDatos de los pasajeros: ")
-    for pasajero in pasajeros:
-        i=i+1
-        print("Pasajero ",i)
-        print("Nombre: ",pasajero[0])
-        print("Apello: ",pasajero[1])
-        print(pasajero[2]+": "+pasajero[3])
-        print("Email: ",pasajero[4])
-        print()
+    paquete = paquetes[paqueteIndex]
+    precioUnitario = int(paquete[6].replace(".", ""))
+    precioUnitarioTotalYDias = calcularPrecioUnitarioTotal(precioUnitario, fechasReserva)
+    precioFinal = precioUnitarioTotalYDias[0] * numPersonas
 
-def diasTotales(fechasReserva):
-    # Convertir las fechas de string a objetos datetime
-    fechaSalida = datetime.datetime.strptime(fechasReserva[0], "%d/%m/%Y")
-    fechaLlegada = datetime.datetime.strptime(fechasReserva[1], "%d/%m/%Y")
+    precioFormateado = "{:,}".format(precioFinal).replace(",", ".")
 
+    print("El precio a pagar por los "+str(precioUnitarioTotalYDias[1])+f" sería de: ${precioFormateado}\n")
+    return [precioFormateado, numPersonas, paquete]
+
+def calcularPrecioUnitarioTotal(precioPorNoche, fechasReserva):
     # Calcular la diferencia de días entre las fechas
-    diferenciaDias = (fechaLlegada - fechaSalida).days
+    diferenciaDias = diasTotales(fechasReserva)
 
-    return diferenciaDias
+    # Calcular el precio total
+    precioTotal = precioPorNoche * diferenciaDias
+
+    return [precioTotal,diferenciaDias]
