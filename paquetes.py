@@ -1,4 +1,3 @@
-
 #paquetes disponibles
 def paquetesListado(ciudadId):
 
