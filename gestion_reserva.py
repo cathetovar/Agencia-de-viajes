@@ -27,7 +27,7 @@ def reserva(origenDestino, precioNumberPaquete, ciudades, pasajeros, fechasReser
     print("Origen:", origen, "\nDestino: ", destino)
     print("\nLas fechas de su reserva son")
     print("Fecha de salida: ", fechasReserva[0])
-    print("Fecha de llegada: ", fechasReserva[1])
+    print("Fecha de regreso: ", fechasReserva[1])
     paquete = precioNumberPaquete[2]
     print("\nPaquete: ")
     printSingleList(paquete)

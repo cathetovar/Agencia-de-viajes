@@ -14,12 +14,12 @@ def validarLocacion(prompt):
 #orquestación origen y destino
 def validarorigenydestino():
     print("-----------------------------------------------------------\n")
-    print("Bienvenido a la agencia de viajes Panchito, la mejor agencia de viajes en Colombia. A continuación se mostrarán las ciudades donde estamos ubicados:")
+    print("Bienvenido a la agencia de viajes Panchito, la mejor agencia de viajes en Colombia.\nA continuación se mostrarán las ciudades donde estamos ubicados:")
     print(" 1. Bogotá \n 2. Medellín \n 3. Cartagena \n 4. Barranquilla \n 5. Cali")
 
     while True:
         origen = validarLocacion("\nDigite el número de su lugar de partida: ")
-        destino = validarLocacion("\nDigite el número de lugar de llegada: ")
+        destino = validarLocacion("\nDigite el número de lugar de destino: ")
 
         if origen != destino:
             return [origen, destino]

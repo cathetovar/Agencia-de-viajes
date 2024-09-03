@@ -20,7 +20,7 @@ def printPasajeros(pasajeros):
         i=i+1
         print("Pasajero ",i)
         print("Nombre: ",pasajero[0])
-        print("Apello: ",pasajero[1])
+        print("Apellido: ",pasajero[1])
         print(pasajero[2]+": "+pasajero[3])
         print("Email: ",pasajero[4])
         print()
@@ -28,9 +28,9 @@ def printPasajeros(pasajeros):
 def diasTotales(fechasReserva):
     # Convertir las fechas de string a objetos datetime
     fechaSalida = datetime.datetime.strptime(fechasReserva[0], "%d/%m/%Y")
-    fechaLlegada = datetime.datetime.strptime(fechasReserva[1], "%d/%m/%Y")
+    fechaRegreso = datetime.datetime.strptime(fechasReserva[1], "%d/%m/%Y")
 
     # Calcular la diferencia de días entre las fechas
-    diferenciaDias = (fechaLlegada - fechaSalida).days
+    diferenciaDias = (fechaRegreso - fechaSalida).days
 
     return diferenciaDias
